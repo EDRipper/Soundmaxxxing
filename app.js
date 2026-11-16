@@ -287,3 +287,15 @@ audioPlayer.load();
 fileName.textContent = 'demo-clip.wav';
 nowPlaying.textContent = 'demo-clip.wav';
 preview.classList.remove('hidden');
+
+// auto-drive for the recording: loop the clip and enter the visualizer, no click needed
+audioPlayer.loop = true;
+function autoStart(){
+  audioPlayer.play().then(()=>{
+    homeScreen.classList.add('hidden');
+    hud.classList.remove('hidden');
+    try{ sphere.visible = true; camera.position.set(0,0,8); }catch(e){}
+    setupAudio();
+  }).catch(()=> setTimeout(autoStart, 800));
+}
+setTimeout(autoStart, 2500);
