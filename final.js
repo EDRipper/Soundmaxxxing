@@ -279,3 +279,9 @@ uploadBtn.addEventListener('click', ()=>{
     uploadInput.click();
 });
 renderer.setAnimationLoop(animate);
+// --- demo auto-load (injected for recorded demo of a real audio clip) ---
+audioPlayer.src = '/sample.wav';
+audioPlayer.load();
+fileName.textContent = 'sample.wav';
+nowPlaying.textContent = 'sample.wav';
+preview.classList.remove('hidden');
